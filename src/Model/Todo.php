@@ -59,6 +59,10 @@ class Todo implements JsonSerializable{
         return "{$this->id}. {$this->status->getMark()} {$this->title}";
     }
 
+    public function updateTitle(string $title) : void {
+        $this->title = self::validateTitle($title);
+    }
+
     public function jsonSerialize() : array {
         return [
             "id" => $this->id,
